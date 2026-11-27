@@ -1,56 +1,53 @@
 ---
-title: "AWS Cloud and AI Day Hanoi 2026"
+title: "Buildrathon Kickoff: Code the Future with CMC Global"
 date: 2026-11-13
 weight: 1
 chapter: false
 pre: " <b>4.1.</b> "
 ---
 
-<div style="border: 4px solid #c62828; background: #ffebee; color: #b71c1c; padding: 20px; margin: 16px 0; border-radius: 8px; text-align: center;">
-<p style="font-size: 2rem; font-weight: 900; line-height: 1.25; margin: 0 0 10px 0;">STOP: YOU NEED TO REWRITE THIS PAGE!</p>
-<p style="font-size: 1.15rem; font-weight: 700; margin: 0;">Events Participated is personal. Replace the sample events, write-ups, and photos below with YOUR OWN 3 events and check-in photos with YOUR OWN face clearly visible. Do NOT submit a teammate's events or photos.</p>
-</div>
-
 | Event detail | Information |
 |---|---|
-| Date | Tuesday, 29 September 2026 |
-| Main conference | JW Marriott Hotel Hanoi |
-| My role | Attendee at the Ho Chi Minh City watch party |
+| Date | Saturday, 26 September 2026 |
+| Time | 09:00-11:20 |
+| Venue | Bitexco Financial Tower, 2 Hải Triều, Ho Chi Minh City |
+| Organizers | CMC Global and the First Cloud AI Journey community |
+| My role | Attendee, together with my Ownword teammates |
 
-## Event overview
+## Why I went
 
-AWS brought together engineers, customers and community builders for more than 30 sessions, alongside an expo, startup showcases and a community area. The Hanoi program opened at 07:30, with a 09:00 keynote, technical sessions from 11:00 and a 17:00 close. The keynote lineup included Amazon CTO Werner Vogels, Katalon's Mai Le and Techcombank CEO Jens Lottner. The agenda also identified a Ho Chi Minh City watch-party session and listed talks on topics such as VPBank's internal developer platform on EKS and taking agentic AI from a demo to deployment.
+This was the first event our team attended together. At that point I had only finished the first two weeks of AWS labs, so I wanted to see how people with more experience approach a real build on AWS, and to meet other interns before the Buildrathon challenge started.
 
-{{< event-photo file="cloud_day_1.jpg" alt="Group photo in the watch-party room with conference video on the screens" caption="At the Ho Chi Minh City watch party with fellow attendees." >}}
+{{< event-photo file="cmc.jpg" alt="Group photo next to CMC Global and First Cloud AI Journey signage" caption="Our group at the Buildrathon kickoff, Bitexco Financial Tower." >}}
 
-## What I learned
+## How the morning was organized
 
-### Follow an incident across services
+The program was short and practical. It started with the goals of the challenge and an overview of AWS, generative AI and building AI agents with AWS services. After an ice-breaking round, there was a talk show with industry practitioners, a Q&A, and finally a 30-minute hands-on mini challenge with mentors in the room.
 
-In a demo I photographed, GoTymeX investigated a login outage that first showed up as a spike in HTTP 5xx errors at the gateway. The team checked metrics, logs, traces, and recent changes, then followed requests through the downstream services. They found a query waiting on a metadata lock on an Aurora MySQL reader. That explained why requests were piling up and why a service further up the chain was timing out.
+## What I took away
 
-I noticed that AWS DevOps Agent had read-only access for the investigation. An engineer still had to approve a change like stopping a query. GoTymeX looked at six months of incidents and reported that the median time from an alert to the first likely cause fell from 34.5 to 10 minutes. That tells me how quickly the team had something to investigate.
+### A short ice-breaker changes how a team works
 
-{{< event-photo file="cloud_day_2.jpg" alt="GoTyme incident investigation slide shown on the watch-party screens" caption="The GoTyme demonstration connected gateway errors to a database lock several services downstream." >}}
+The ice-breaking round only lasted fifteen minutes, but it was the part that made the rest of the morning work for me. When the hands-on challenge started, we already knew who was comfortable writing prompts, who liked reading documentation and who wanted to present. In a 30-minute build there is no time to negotiate roles, so knowing each other's strengths first saved us from all doing the same task at once.
 
-### Verify the identity a workload actually uses
+### Building an agent is mostly about choosing what it should not do
 
-Kha Van's conference recap described pairing a Kubernetes service account with an IAM role using Amazon EKS Pod Identity. The application can obtain temporary AWS credentials through the SDK. An environment variable or another credential source earlier in the SDK's chain can change which identity the application uses. If a permission error occurs, checking the caller identity inside the workload helps distinguish a missing permission from a workload using the wrong role.
+During the hands-on part, the mentors walked us through the pieces of an AI solution on AWS: prompt engineering, retrieval-augmented generation (RAG), knowledge bases and agents. What surprised me was how much of the work was deciding the limits. A narrow agent that does one thing well is easier to test and easier to explain than a general assistant. I also realized I need to understand the AWS foundations from my worklog (IAM permissions, logs, cost) before I can safely give an agent access to anything.
 
-### Design for the work that follows the demo
+### Ask the question you are embarrassed to ask
 
-Kha Van's recap described how internal developer platforms let teams repeat the same deployment steps. It also raised a question about AI agents in production. Who owns the agent, what can it do, and where can the team see what it did? The infrastructure examples solved different problems. Direct Connect in Hanoi gives organizations a private path to AWS, and Hanoi Local Zone can put resources closer to users. The choice depends on the latency users see, where the data has to live, and what the team can operate.
+In the Q&A, several people asked very basic questions about certifications and where to start with AWS. The answers were the most useful part of the morning for me, because they turned a long list of services into an order to learn them: start with the core services, practise in labs, then build something end to end. That is close to the path I later followed in my worklog, ending with deploying Ownword.
+
+### Talking to practitioners makes the career path concrete
+
+The talk show covered how organizations actually use AWS and agentic AI in real projects. Hearing people describe their day-to-day work made cloud engineering feel less abstract. It also reminded me that being able to explain a design to non-technical people is part of the job, not an extra.
 
 ## How this relates to Ownword
 
-I'd use the same approach if Ownword users couldn't sign in or save a word. I'd log the step that failed, the time, and the component that returned the error. That would give the team enough to trace whether the problem started at sign-in, in the API, or in storage without recording credentials or user content.
-
-{{< event-photo file="cloud_day_3.jpg" alt="Conference badge showing Lê Tuấn Kiệt and FPT University" caption="My attendance badge for AWS Cloud and AI Day Hanoi 2026." >}}
+Ownword already uses AI in two places: concept search on Amazon Bedrock and writing feedback through OpenRouter. After this event I paid more attention to the boundaries around those features. The model keys stay on the server, the suggestions are validated before they reach the learner, and each feature does one clearly defined job. If we add more AI features later, I would start by writing down what the feature must never do, then test those cases first.
 
 ## References
 
-- [Conference overview](https://aws.amazon.com/events/cloud-day-hanoi/)
-- [Official agenda](https://aws.amazon.com/events/cloud-day-hanoi/agenda/)
-- [GoTymeX engineering write-up](https://www.linkedin.com/pulse/gotymexs-aiops-agent-diagnoses-incidents-35x-faster-aws-drkkc)
-- [Conference recap](https://builder.aws.com/content/3KMpKxUhRFeSlclpmwu5ZxBQBYL/aws-cloud-and-ai-day-hanoi-2026-building-for-the-next-phase-of-cloud-and-ai)
-- [Amazon EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html)
+- [Organizer's agenda (Luma)](https://luma.com/8fe9vvps)
+- [What is Amazon Bedrock?](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)
+- [Amazon Bedrock Agents](https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html)

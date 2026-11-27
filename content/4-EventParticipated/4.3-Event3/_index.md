@@ -6,11 +6,6 @@ chapter: false
 pre: " <b>4.3.</b> "
 ---
 
-<div style="border: 4px solid #c62828; background: #ffebee; color: #b71c1c; padding: 20px; margin: 16px 0; border-radius: 8px; text-align: center;">
-<p style="font-size: 2rem; font-weight: 900; line-height: 1.25; margin: 0 0 10px 0;">STOP: YOU NEED TO REWRITE THIS PAGE!</p>
-<p style="font-size: 1.15rem; font-weight: 700; margin: 0;">Events Participated is personal. Replace the sample events, write-ups, and photos below with YOUR OWN 3 events and check-in photos with YOUR OWN face clearly visible. Do NOT submit a teammate's events or photos.</p>
-</div>
-
 | Event detail | Information |
 |---|---|
 | Event theme | Navigating the Future of Cloud & AI in Vietnam |
@@ -21,38 +16,38 @@ pre: " <b>4.3.</b> "
 
 ## Event overview
 
-At the First Cloud AI Journey fireside chat, Dr. Vogels talked about database outages at Amazon, keeping services available, and paying for cloud resources as you use them. He also discussed what engineers are responsible for when they use AI. What stuck with me was how often he started with a problem that users or operators had before getting into the technology.
+Dr. Werner Vogels has spent more than two decades building the infrastructure behind Amazon and AWS. In this fireside chat organized for the First Cloud AI Journey community, he shared lessons from that work and talked about what it means to be a developer when AI can write code. I came in expecting a talk about technology and left thinking mostly about habits: how to choose tools, how to talk about trade-offs and how to keep learning.
 
-{{< event-photo file="fireside_1.jpg" alt="First Cloud AI Journey opening slide showing the event title and 2 October 2026" caption="The opening slide for the 2 October fireside chat." >}}
+{{< event-photo file="fireside_1.jpg" alt="First Cloud AI Journey opening slide showing the event title and 2 October 2026" caption="The opening slide of the fireside chat." >}}
 
 ## What I learned
 
-### Start with the way the application reads and writes data
+### Match the tool to the workload
 
-After a peak shopping-season outage, Amazon examined what its applications were asking the database to do. A large share of requests were key lookups, such as finding a shopping cart by its ID. That observation helped motivate Dynamo, Amazon's distributed key-value system and an influence on DynamoDB. Dynamo's design prioritized availability for those operations and used object versions to help resolve conflicting writes when needed. My takeaway was to list the common reads and writes before choosing a database, then decide how the application should behave when a read is stale or a write is retried.
+Dr. Vogels described a holiday peak when an overloaded relational database cluster went down and took customer data storage offline for a day. When Amazon's engineers looked at what the applications were really doing, roughly 70% of the requests were simple key-value lookups, about 20% used a single table, and only around 10% needed full relational features. What I took from the story was not "build your own database" but "measure before you choose". It is easy to pick a familiar tool for everything. It is better to look at the actual requests first.
 
-### Measure the slow requests and rehearse recovery
+### Everything fails, so plan for it
 
-The discussion on operational excellence gave me two ways to check that an application behaves as intended. The first is to look at tail latency. If P99.9 is two seconds, roughly 99.9% of observed requests completed within two seconds, while the slowest fraction took longer. A median can look healthy while those users are still waiting. The second is to run a GameDay, a planned exercise that introduces a failure and checks that detection, failover and recovery work together. A useful exercise records when an alert fired, who acted on it and which user operations recovered.
+One idea he returned to was that everything fails all the time. Systems should be designed so that losing a component, or even a whole data center, doesn't stop the service. Amazon runs GameDays where teams deliberately take infrastructure offline to check that failover happens automatically. For a student project this sounds far away, but the principle scales down: decide in advance what happens when each part fails, and practise it instead of hoping.
 
-### Budget for the reliability a workload needs
+{{< event-photo file="fireside_2.jpg" alt="Dr. Werner Vogels speaking with the host during the fireside chat" caption="Dr. Werner Vogels during the conversation." >}}
 
-Vogels also talked about how paying for cloud resources by usage changes what teams invest in. I'd ask what a proposed change actually buys us. Extra capacity or redundancy can be worth it if it protects a user workflow we care about. For a small pilot, I'd start by working out the monthly cost and trying the recovery steps.
+### Explain trade-offs in plain language
 
-{{< event-photo file="fireside_2.jpg" alt="Dr. Werner Vogels speaking with the host during the fireside chat" caption="Dr. Werner Vogels in conversation during the fireside chat." >}}
+Among the traits of what he calls the "Renaissance developer", the one I needed most was communication. His example was the cost difference between 99.9% and 99.99% uptime. That extra "9" is not a technical detail. It is a business decision, and engineers should explain it so that the people paying for it can choose. The other traits were curiosity, systems thinking, ownership and T-shaped expertise: going deep in one area while understanding enough of the neighbouring ones, such as the UI, the business logic and the database.
 
-### Keep ownership when using AI
+### AI is a fast but imprecise compiler
 
-Vogels's "Renaissance developer" combines technical depth with curiosity, systems thinking and clear communication. I understood this as knowing enough about the neighboring parts of a system to see where a change might cause trouble. If AI helps draft a change to a sign-in flow, the engineer still has to understand the session behavior, review the permissions and test both successful and failed attempts.
+He described AI as a natural-language compiler that is not precise. It has cut prototyping from weeks to hours, but the output still has to be checked for security problems, edge cases and efficiency. The engineer remains responsible for what goes into production. He ended with a warning from Grace Hopper that "we've always done it this way" is a dangerous mindset. For me that means I shouldn't refuse AI tools, and I shouldn't trust them blindly either.
 
 ## How this relates to Ownword
 
-A slow sign-in, word lookup, or WordBoard reload is easy to notice in Ownword. I'd time each one so a good overall average can't hide a single slow step. For a recovery exercise, I'd test whether a failed lookup gives a clear message, lets me retry, and leaves the words I'd already saved accessible.
+Ownword runs on one Lightsail VM and a Single-AZ RDS database. That is a deliberate trade-off for a small pilot: lower cost in exchange for less redundancy. After this talk I can explain that choice better. If the database fails, we rely on daily exports to S3 that we have actually restored in an isolated test, and the `BackupFresh` alarm tells us if a backup goes missing. If the pilot grows, moving to Multi-AZ is the extra "9" we would discuss with the team, together with its monthly cost. I also want to keep reviewing AI-assisted code line by line, especially in sign-in and database access.
 
-{{< event-photo file="fireside_3.jpg" alt="Group photo with other attendees at the First Cloud AI Journey event" caption="With my teammates at the event." >}}
+{{< event-photo file="fireside_3.jpg" alt="Group photo with other attendees at the First Cloud AI Journey event" caption="With my teammates after the fireside chat." >}}
 
 ## References
 
-- [AWS Builder Center event recap](https://builder.aws.com/content/3KBSLeKsdkk6uMUPq7d9Xxa5jbS/the-invariable-lessons-of-tech-and-humanity-key-takeaways-from-amazon-cto-werner-vogels)
+- [AWS Builder Center recap of the fireside chat](https://builder.aws.com/content/3KBSLeKsdkk6uMUPq7d9Xxa5jbS/the-invariable-lessons-of-tech-and-humanity-key-takeaways-from-amazon-cto-werner-vogels)
 - [Amazon's Dynamo paper](https://www.amazon.science/publications/dynamo-amazons-highly-available-key-value-store)
-- [Werner Vogels on the Renaissance developer](https://www.allthingsdistributed.com/2025/11/tech-predictions-for-2026-and-beyond.html)
+- [Reliability pillar of the AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html)

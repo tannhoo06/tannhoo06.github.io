@@ -1,61 +1,54 @@
 ---
-title: "Buildrathon Kickoff: Code the Future with CMC Global"
+title: "AWS Cloud and AI Day Hanoi 2026"
 date: 2026-11-13
 weight: 2
 chapter: false
 pre: " <b>4.2.</b> "
 ---
 
-<div style="border: 4px solid #c62828; background: #ffebee; color: #b71c1c; padding: 20px; margin: 16px 0; border-radius: 8px; text-align: center;">
-<p style="font-size: 2rem; font-weight: 900; line-height: 1.25; margin: 0 0 10px 0;">STOP: YOU NEED TO REWRITE THIS PAGE!</p>
-<p style="font-size: 1.15rem; font-weight: 700; margin: 0;">Events Participated is personal. Replace the sample events, write-ups, and photos below with YOUR OWN 3 events and check-in photos with YOUR OWN face clearly visible. Do NOT submit a teammate's events or photos.</p>
-</div>
-
 | Event detail | Information |
 |---|---|
-| Date | Saturday, 26 September 2026 |
-| Venue | Bitexco Financial Tower, 2 Hải Triều, Ho Chi Minh City |
+| Date | Tuesday, 29 September 2026 |
+| Main conference | JW Marriott Hotel Hanoi |
+| Where I joined | Ho Chi Minh City watch party |
+| Session I followed | DVT205, watch party for "Building software like never before with agentic AI" |
 | My role | Attendee |
 
-## Event program
+## Event overview
 
-The kickoff opened with the challenge goals and how entries would be judged. After introductions and advice about working in cloud and AI, the program moved on to an exercise on building an agent.
+The main event took place in Hanoi with a keynote in the morning and parallel tracks from 11:00 on AI, data and analytics, migration and modern applications. Sessions on the agenda included an internal developer platform on Amazon EKS from VPBank, taking agentic AI from demo to deployment with Katalon, building an AI-ready data foundation, and large-scale migration with AWS Transform. Our team followed the event from the Ho Chi Minh City watch party, where the 11:00 session was about building software with agentic AI.
 
-| Local time | Topic |
-|---|---|
-| 09:00-09:30 | Challenge briefing, judging criteria and an introduction to AWS and generative AI |
-| 09:30-09:45 | Introductions and time to connect with other participants |
-| 09:45-10:30 | Cloud and AI career talk with industry practitioners |
-| 10:30-10:45 | Q&A covering AWS, generative AI, certifications and the challenge |
-| 10:45-11:15 | Practical AI agent challenge covering prompts, knowledge bases and retrieval |
-| 11:15-11:20 | Closing remarks and learning resources |
-
-{{< event-photo file="cmc.jpg" alt="Group photo next to CMC Global and First Cloud AI Journey signage" caption="Group photo at the Buildrathon kickoff at Bitexco Financial Tower." >}}
+{{< event-photo file="cloud_day_1.jpg" alt="Group photo in the watch-party room with conference video on the screens" caption="At the Ho Chi Minh City watch party." >}}
 
 ## What I learned
 
-### Define a task that can be evaluated
+### The community behind the event
 
-The judging criteria made me think about what a team could show in a short demo. I'd start with an agent that answers a common support question using a small set of documents. Show a question with a known answer and the passage that supports it. Then try a question the documents don't cover so the reviewer can see how the agent handles it.
+One keynote slide stayed with me more than any product announcement. It counted more than 157,000 people trained in cloud and AI, more than 54,000 members of the AWS Study Group and more than 15,000 participants in the First Cloud AI Journey ecosystem. I am one of those 15,000. It made me see the labs and blogs I use every week as part of something much larger, and it is a reason to share what I learn back with the group.
 
-### Give prompts, retrieval and tools distinct jobs
+### Agents write code, but someone still owns it
 
-The practical block covered prompt engineering, retrieval-augmented generation (RAG), knowledge bases and agents. The prompt defines the task and response format. A knowledge base gives the model a collection to retrieve relevant material from. An agent can choose a permitted tool to take a further step. A question about a policy might only need document retrieval, while a request to edit a record introduces a decision about who may authorize that action.
+The watch-party session was about using AI agents across the software lifecycle, not only to autocomplete code but to plan, change and test larger pieces of work. The theme I kept hearing during the day was that once an agent can call APIs, modify code or trigger a deployment, it raises the same questions as any new team member: which identity does it use, what is it allowed to do, who approves its changes and where can we see what it did. Faster code generation doesn't remove the need for review. It moves the effort from writing code to reading and checking it.
 
-### Test what happens when the evidence is weak
+{{< event-photo file="cloud_day_2.jpg" alt="Slide shown on the watch-party screens" caption="A slide from the sessions we followed at the watch party." >}}
 
-When I test an agent, I'd check whether the source it cites actually supports the answer and what happens when the source is missing or stale. I'd ask one clear question, one that needs clarification, and one the knowledge base can't answer. If the agent can edit records, I'd also check that asking it to read something leaves the records as they were.
+### More automation needs more guardrails, not fewer
 
-### Explain design decisions in terms of the user
+Platform engineering came up as a foundation for AI rather than a separate topic. When teams automate more, they rely more on shared deployment patterns, secure defaults and policy checks, because nobody manually inspects every change anymore. I connected this to what I learned in the CI/CD labs: a pipeline is only as safe as the checks it runs before something reaches production.
 
-The career talk and Q&A gave me a way to present a project in an interview or demo. I'd describe a problem the user has and explain one decision I made. Then I'd show a result or a test the audience could reproduce.
+### Identities that aren't people are a security boundary
 
-## How this relates to Ownword (my project) {#how-this-relates-to-ownword}
+Workloads, pipelines, services and AI agents all call AWS APIs, and each of them needs an identity. The advice I noted was to prefer short-lived credentials and federation over long-lived keys, to design trust policies carefully and to keep verifying which identity is actually in use. This was the same lesson as my week 3 lab on IAM roles for EC2, seen at a much larger scale.
 
-For an Ownword demo, I'd look up a word, save it, and find it again in WordBoard. I'd also try a lookup with no result and try saving the same word twice. If we add questions based on curated learning material, I'd check when the app can cite a source and when it guesses before deciding whether retrieval helps.
+## How this relates to Ownword
+
+Ownword has several non-human identities: the Lightsail host calling Amazon Bedrock, the backup job writing to S3, the Pre sign-up Lambda in Cognito and GitHub Actions pushing images to ECR. Our architecture already gives Bedrock access, S3 backups and account linking separate IAM policies, so one identity can't quietly do another's job. After this event I would like to go one step further and replace any remaining long-lived access key with temporary credentials, and write down for each identity who owns it and what it is allowed to do.
+
+{{< event-photo file="cloud_day_3.jpg" alt="Conference attendance badge" caption="My attendance badge for AWS Cloud and AI Day Hanoi 2026." >}}
 
 ## References
 
-- [Organizer's agenda](https://luma.com/8fe9vvps)
-- [Event date listing](https://allai.events/event/buildrathon-kickoff-code-the-future-with-cmc-global)
-- [How Amazon Bedrock Knowledge Bases works](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-how-it-works.html)
+- [Conference overview](https://aws.amazon.com/events/cloud-day-hanoi/)
+- [Official agenda](https://aws.amazon.com/events/cloud-day-hanoi/agenda/)
+- [Conference recap on AWS Builder Center](https://builder.aws.com/content/3KMpKxUhRFeSlclpmwu5ZxBQBYL/aws-cloud-and-ai-day-hanoi-2026-building-for-the-next-phase-of-cloud-and-ai)
+- [Temporary security credentials in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)

@@ -1,56 +1,53 @@
 ---
-title: "AWS Cloud and AI Day Hanoi 2026"
+title: "Buildrathon Kickoff: Code the Future with CMC Global"
 date: 2026-11-13
 weight: 1
 chapter: false
 pre: " <b>4.1.</b> "
 ---
 
-<div style="border: 4px solid #c62828; background: #ffebee; color: #b71c1c; padding: 20px; margin: 16px 0; border-radius: 8px; text-align: center;">
-<p style="font-size: 2rem; font-weight: 900; line-height: 1.25; margin: 0 0 10px 0;">DỪNG LẠI: BẠN PHẢI VIẾT LẠI TRANG NÀY!</p>
-<p style="font-size: 1.15rem; font-weight: 700; margin: 0;">Mục Sự kiện đã tham gia là phần cá nhân. Hãy thay toàn bộ 3 sự kiện mẫu, bài viết và hình ảnh bên dưới bằng 3 SỰ KIỆN CỦA CHÍNH BẠN cùng ảnh check-in thấy rõ khuôn mặt của bạn. KHÔNG nộp bài viết hay ảnh sự kiện của thành viên khác.</p>
-</div>
-
 | Thông tin | Chi tiết |
 |---|---|
-| Ngày | Thứ Ba, 29/09/2026 |
-| Hội nghị chính | Khách sạn JW Marriott Hà Nội |
-| Vai trò | Người tham dự buổi theo dõi trực tiếp tại TP. Hồ Chí Minh |
+| Ngày | Thứ Bảy, 26/09/2026 |
+| Thời gian | 09:00-11:20 |
+| Địa điểm | Bitexco Financial Tower, số 2 Hải Triều, TP. Hồ Chí Minh |
+| Đơn vị tổ chức | CMC Global và cộng đồng First Cloud AI Journey |
+| Vai trò | Người tham dự, đi cùng các bạn trong nhóm Ownword |
 
-## Tổng quan sự kiện
+## Vì sao mình tham gia
 
-AWS tổ chức hơn 30 phiên cùng các gian triển lãm, khu giới thiệu startup và khu gặp gỡ cộng đồng. Tại Hà Nội, chương trình mở cửa đón khách lúc 07:30, bắt đầu keynote lúc 09:00, chuyển sang các phiên kỹ thuật từ 11:00 và kết thúc lúc 17:00. Các diễn giả keynote có Giám đốc Công nghệ Amazon Werner Vogels, Mai Le từ Katalon và Tổng Giám đốc Techcombank Jens Lottner. Lịch chính thức có mục dành cho điểm cầu TP. Hồ Chí Minh và giới thiệu các chủ đề như nền tảng phát triển nội bộ trên EKS của VPBank và quá trình đưa AI agent từ bản demo vào triển khai.
+Đây là sự kiện đầu tiên cả nhóm cùng đi. Lúc đó mình mới học xong hai tuần lab AWS, nên mình muốn xem những người có kinh nghiệm hơn bắt tay xây dựng một sản phẩm thật trên AWS như thế nào, đồng thời làm quen với các bạn thực tập khác trước khi thử thách Buildrathon bắt đầu.
 
-{{< event-photo file="cloud_day_1.jpg" alt="Ảnh nhóm tại điểm cầu với màn hình đang chiếu chương trình hội nghị" caption="Cùng các bạn tham dự tại điểm cầu TP. Hồ Chí Minh." >}}
+{{< event-photo file="cmc.jpg" alt="Ảnh nhóm cạnh bảng tên CMC Global và First Cloud AI Journey" caption="Nhóm mình tại buổi khởi động Buildrathon ở Bitexco Financial Tower." >}}
 
-## Kiến thức mình học được
+## Chương trình buổi sáng
 
-### Lần theo sự cố qua nhiều dịch vụ
+Chương trình ngắn và thiên về thực hành. Mở đầu là mục tiêu của thử thách và phần giới thiệu tổng quan về AWS, AI tạo sinh và cách xây dựng AI agent bằng các dịch vụ AWS. Sau phần làm quen là tọa đàm với người trong ngành, phần hỏi đáp và cuối cùng là thử thách thực hành 30 phút có mentor hỗ trợ ngay tại chỗ.
 
-Trong phần demo mình chụp lại, sự cố đăng nhập của GoTymeX xuất hiện đầu tiên qua số lỗi HTTP 5xx tăng ở gateway. Nhóm đối chiếu metric, log, trace và các thay đổi gần đây, rồi lần theo yêu cầu qua từng dịch vụ. Họ tìm thấy một truy vấn đang chờ khóa metadata trên Aurora MySQL reader. Chi tiết đó giải thích vì sao yêu cầu bị ùn lại và một dịch vụ ở phía trước bị timeout.
+## Điều mình rút ra
 
-Mình để ý AWS DevOps Agent chỉ có quyền đọc khi điều tra. Kỹ sư vẫn phải duyệt những việc như dừng truy vấn. Qua sáu tháng theo dõi sự cố, GoTymeX cho biết thời gian trung vị từ lúc có cảnh báo đến lúc tìm được nguyên nhân khả dĩ đầu tiên giảm từ 34,5 phút xuống còn 10 phút. Con số đó cho mình biết đội vận hành mất bao lâu để có một đầu mối có thể kiểm tra.
+### Mười lăm phút làm quen thay đổi cách cả nhóm làm việc
 
-{{< event-photo file="cloud_day_2.jpg" alt="Slide chẩn đoán sự cố của GoTyme trên màn hình tại điểm cầu" caption="Phần trình diễn của GoTyme lần theo lỗi ở gateway tới khóa cơ sở dữ liệu sau nhiều dịch vụ." >}}
+Phần làm quen chỉ kéo dài mười lăm phút nhưng lại giúp phần còn lại của buổi sáng diễn ra suôn sẻ. Khi bắt đầu thực hành, nhóm đã biết ai quen viết prompt, ai thích đọc tài liệu và ai muốn đứng ra trình bày. Trong 30 phút không có thời gian để bàn chia việc, nên hiểu điểm mạnh của nhau từ trước giúp cả nhóm không làm trùng một việc.
 
-### Kiểm tra ứng dụng đang dùng định danh nào
+### Xây agent chủ yếu là quyết định nó không được làm gì
 
-Bài tổng kết của Kha Van trình bày cách Amazon EKS Pod Identity liên kết service account của Kubernetes với một IAM role. Ứng dụng có thể nhận thông tin xác thực tạm thời qua AWS SDK. Biến môi trường hoặc một nguồn xuất hiện sớm hơn trong chuỗi tìm thông tin xác thực của SDK có thể khiến ứng dụng dùng một định danh khác. Khi gặp lỗi quyền, kiểm tra định danh từ bên trong workload giúp xác định ứng dụng đang thiếu quyền hay đang dùng sai role.
+Trong phần thực hành, mentor giới thiệu các thành phần của một giải pháp AI trên AWS: thiết kế prompt, tạo sinh tăng cường truy xuất (RAG), kho tri thức và agent. Điều làm mình bất ngờ là phần lớn công việc nằm ở việc đặt giới hạn. Một agent hẹp, làm tốt một việc sẽ dễ kiểm thử và dễ giải thích hơn một trợ lý làm đủ thứ. Mình cũng nhận ra phải nắm chắc các kiến thức nền trong worklog (quyền IAM, log, chi phí) trước khi dám cấp cho agent quyền truy cập vào bất cứ thứ gì.
 
-### Tính đến việc vận hành sau bản demo
+### Cứ hỏi câu mình ngại hỏi
 
-Bài tổng kết còn nêu cách một nền tảng nội bộ giúp chuẩn hóa các thao tác triển khai lặp lại và vì sao AI agent trong môi trường thật cần người chịu trách nhiệm, quyền hạn rõ ràng và nhật ký thao tác. Phần hạ tầng đưa ra hai ví dụ về lựa chọn theo nhu cầu ứng dụng. Địa điểm Direct Connect ở Hà Nội cung cấp đường kết nối riêng tới AWS, còn Hanoi Local Zone có thể hữu ích khi cần đặt tài nguyên gần người dùng. Độ trễ thực tế, vị trí lưu dữ liệu và khả năng vận hành của nhóm là những yếu tố cần xem xét trước khi lựa chọn.
+Ở phần hỏi đáp, nhiều bạn hỏi những câu rất cơ bản về chứng chỉ và nên bắt đầu học AWS từ đâu. Với mình đây là phần hữu ích nhất, vì câu trả lời biến một danh sách dài các dịch vụ thành thứ tự học rõ ràng: học các dịch vụ cốt lõi, thực hành qua lab, rồi tự xây một sản phẩm hoàn chỉnh. Lộ trình này khá giống con đường mình đi trong worklog, kết thúc bằng việc triển khai Ownword.
+
+### Nghe người trong nghề kể giúp con đường nghề nghiệp rõ hơn
+
+Phần tọa đàm nói về cách các tổ chức dùng AWS và agentic AI trong dự án thật. Nghe mọi người kể công việc hằng ngày làm nghề cloud bớt trừu tượng với mình. Mình cũng được nhắc rằng giải thích thiết kế cho người không chuyên là một phần của công việc chứ không phải việc phụ.
 
 ## Liên hệ với Ownword
 
-Nếu người dùng Ownword gặp lỗi khi đăng nhập hoặc lưu từ, mình sẽ áp dụng cách lần theo sự cố đó. Log cần ghi bước nào lỗi, lỗi xảy ra lúc nào và thành phần nào trả lỗi. Nhóm có thể dựa vào đó để tìm xem vấn đề nằm ở xác thực, API hay lưu trữ, đồng thời giữ thông tin xác thực và nội dung người dùng ngoài log.
+Ownword đã dùng AI ở hai chỗ: tìm từ theo ý nghĩa bằng Amazon Bedrock và góp ý bài viết qua OpenRouter. Sau sự kiện này mình chú ý hơn đến giới hạn của các tính năng đó. Key của model chỉ nằm trên server, gợi ý được kiểm tra trước khi đến tay người học, và mỗi tính năng chỉ làm một việc được định nghĩa rõ. Nếu sau này thêm tính năng AI, mình sẽ viết ra trước những điều tính năng đó tuyệt đối không được làm, rồi kiểm thử các trường hợp đó đầu tiên.
 
-{{< event-photo file="cloud_day_3.jpg" alt="Thẻ tham dự ghi tên Lê Tuấn Kiệt và FPT University" caption="Thẻ tham dự của mình tại AWS Cloud and AI Day Hanoi 2026." >}}
+## Tài liệu tham khảo
 
-## References
-
-- [Tổng quan hội nghị](https://aws.amazon.com/events/cloud-day-hanoi/)
-- [Lịch chương trình](https://aws.amazon.com/events/cloud-day-hanoi/agenda/)
-- [Bài viết kỹ thuật của GoTymeX](https://www.linkedin.com/pulse/gotymexs-aiops-agent-diagnoses-incidents-35x-faster-aws-drkkc)
-- [Bài tổng kết hội nghị](https://builder.aws.com/content/3KMpKxUhRFeSlclpmwu5ZxBQBYL/aws-cloud-and-ai-day-hanoi-2026-building-for-the-next-phase-of-cloud-and-ai)
-- [Tài liệu Amazon EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html)
+- [Lịch của ban tổ chức (Luma)](https://luma.com/8fe9vvps)
+- [Amazon Bedrock là gì?](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)
+- [Amazon Bedrock Agents](https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html)

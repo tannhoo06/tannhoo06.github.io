@@ -6,11 +6,6 @@ chapter: false
 pre: " <b>4.3.</b> "
 ---
 
-<div style="border: 4px solid #c62828; background: #ffebee; color: #b71c1c; padding: 20px; margin: 16px 0; border-radius: 8px; text-align: center;">
-<p style="font-size: 2rem; font-weight: 900; line-height: 1.25; margin: 0 0 10px 0;">DỪNG LẠI: BẠN PHẢI VIẾT LẠI TRANG NÀY!</p>
-<p style="font-size: 1.15rem; font-weight: 700; margin: 0;">Mục Sự kiện đã tham gia là phần cá nhân. Hãy thay toàn bộ 3 sự kiện mẫu, bài viết và hình ảnh bên dưới bằng 3 SỰ KIỆN CỦA CHÍNH BẠN cùng ảnh check-in thấy rõ khuôn mặt của bạn. KHÔNG nộp bài viết hay ảnh sự kiện của thành viên khác.</p>
-</div>
-
 | Thông tin | Chi tiết |
 |---|---|
 | Chủ đề | Navigating the Future of Cloud & AI in Vietnam |
@@ -21,38 +16,38 @@ pre: " <b>4.3.</b> "
 
 ## Tổng quan sự kiện
 
-Trong buổi trò chuyện của First Cloud AI Journey, Tiến sĩ Vogels kể về sự cố cơ sở dữ liệu ở Amazon, cách giữ dịch vụ hoạt động và chuyện trả phí theo mức dùng. Ông cũng nói về trách nhiệm của kỹ sư khi dùng AI. Mình nhớ nhất là ông thường bắt đầu từ vấn đề người dùng hoặc đội vận hành gặp phải rồi mới nói đến công nghệ.
+Tiến sĩ Werner Vogels đã dành hơn hai mươi năm xây dựng hạ tầng cho Amazon và AWS. Trong buổi trò chuyện tổ chức cho cộng đồng First Cloud AI Journey, ông chia sẻ bài học từ quãng thời gian đó và nói về việc làm lập trình viên khi AI đã có thể viết code. Mình đến với suy nghĩ sẽ nghe về công nghệ, nhưng ra về lại nghĩ nhiều nhất về thói quen làm việc: cách chọn công cụ, cách trình bày đánh đổi và cách tiếp tục học.
 
-{{< event-photo file="fireside_1.jpg" alt="Slide mở đầu của First Cloud AI Journey ghi chủ đề và ngày 02/10/2026" caption="Slide mở đầu của buổi Fireside Chat ngày 02/10." >}}
+{{< event-photo file="fireside_1.jpg" alt="Slide mở đầu của First Cloud AI Journey ghi chủ đề và ngày 02/10/2026" caption="Slide mở đầu buổi Fireside Chat." >}}
 
-## Kiến thức mình học được
+## Điều mình học được
 
-### Bắt đầu từ cách ứng dụng đọc và ghi dữ liệu
+### Chọn công cụ theo khối lượng công việc thực tế
 
-Sau một sự cố vào mùa mua sắm cao điểm, Amazon xem lại những thao tác ứng dụng thường gửi đến cơ sở dữ liệu. Nhiều yêu cầu chỉ cần tìm theo khóa, như lấy giỏ hàng theo mã định danh. Quan sát đó góp phần dẫn đến Dynamo, hệ thống lưu trữ khóa-giá trị phân tán của Amazon và là một trong những nền tảng ý tưởng của DynamoDB. Dynamo ưu tiên tính sẵn sàng cho các thao tác này và quản lý phiên bản dữ liệu để hỗ trợ xử lý khi nhiều lượt ghi xung đột. Từ ví dụ đó, mình sẽ liệt kê các luồng đọc và ghi thường gặp trước khi chọn cơ sở dữ liệu, đồng thời nghĩ đến cách ứng dụng xử lý dữ liệu chưa cập nhật hoặc thao tác ghi được thử lại.
+Tiến sĩ Vogels kể về một mùa mua sắm cao điểm khi cụm cơ sở dữ liệu quan hệ bị quá tải và làm hệ thống lưu dữ liệu khách hàng ngừng hoạt động cả một ngày. Khi các kỹ sư Amazon xem lại ứng dụng thực sự làm gì, khoảng 70% yêu cầu chỉ là tra cứu khóa-giá trị đơn giản, khoảng 20% chỉ dùng một bảng và chỉ khoảng 10% cần đầy đủ tính năng quan hệ. Điều mình rút ra không phải là "hãy tự viết cơ sở dữ liệu" mà là "đo trước rồi mới chọn". Rất dễ dùng một công cụ quen thuộc cho mọi việc. Tốt hơn là nhìn vào các yêu cầu thật trước đã.
 
-### Đo các yêu cầu chậm và diễn tập khôi phục
+### Mọi thứ đều có thể hỏng, nên hãy chuẩn bị trước
 
-Phần vận hành cho mình hai cách kiểm tra hệ thống. Một là xem độ trễ ở nhóm yêu cầu chậm nhất. Ví dụ, nếu P99.9 là hai giây thì khoảng 99,9% yêu cầu quan sát được hoàn thành trong vòng hai giây, còn một nhóm nhỏ phải chờ lâu hơn. Trung vị có thể vẫn thấp trong khi nhóm đó gặp vấn đề. Hai là tổ chức GameDay, một buổi chủ động tạo lỗi có kiểm soát để kiểm tra khả năng phát hiện, chuyển sang hệ thống dự phòng và khôi phục. Khi diễn tập, nhóm có thể ghi lại thời điểm cảnh báo, ai xử lý và thao tác nào của người dùng hoạt động trở lại.
+Một ý ông nhắc lại nhiều lần là mọi thứ đều có thể hỏng bất cứ lúc nào. Hệ thống cần được thiết kế để khi mất một thành phần, thậm chí cả một trung tâm dữ liệu, dịch vụ vẫn chạy. Amazon tổ chức các buổi GameDay, cố tình tắt hạ tầng để kiểm tra việc chuyển đổi dự phòng có diễn ra tự động hay không. Với một dự án sinh viên, điều này nghe có vẻ xa vời, nhưng nguyên tắc vẫn áp dụng được ở quy mô nhỏ: quyết định trước điều gì sẽ xảy ra khi từng phần bị lỗi và tập dượt thay vì chỉ hy vọng.
 
-### Cân đối chi phí với độ tin cậy cần thiết
+{{< event-photo file="fireside_2.jpg" alt="Tiến sĩ Werner Vogels trò chuyện cùng người dẫn chương trình" caption="Tiến sĩ Werner Vogels trong buổi trò chuyện." >}}
 
-Tiến sĩ Vogels cũng nói về việc trả tiền theo mức sử dụng và cách điều đó ảnh hưởng đến quyết định đầu tư hạ tầng. Mình sẽ hỏi mỗi đề xuất tăng tài nguyên hoặc thêm dự phòng giúp được việc gì. Nếu thay đổi bảo vệ một thao tác quan trọng của người dùng thì có thể đáng làm. Với bản thử nghiệm nhỏ, mình sẽ tính chi phí hằng tháng và thử khôi phục trước khi quyết định đầu tư thêm.
+### Giải thích đánh đổi bằng ngôn ngữ dễ hiểu
 
-{{< event-photo file="fireside_2.jpg" alt="Tiến sĩ Werner Vogels trao đổi cùng người dẫn chương trình" caption="Tiến sĩ Werner Vogels trong phần trò chuyện tại sự kiện." >}}
+Trong những phẩm chất của "Renaissance developer" mà ông nêu, phẩm chất mình cần nhất là giao tiếp. Ví dụ của ông là chênh lệch chi phí giữa uptime 99,9% và 99,99%. Thêm một số "9" không phải chi tiết kỹ thuật mà là một quyết định kinh doanh, và kỹ sư cần giải thích để người chi tiền có thể lựa chọn. Các phẩm chất còn lại là tò mò, tư duy hệ thống, tinh thần chịu trách nhiệm và chuyên môn hình chữ T: đi sâu vào một lĩnh vực nhưng hiểu đủ các phần lân cận như giao diện, logic nghiệp vụ và cơ sở dữ liệu.
 
-### Giữ trách nhiệm kỹ thuật khi dùng AI
+### AI là trình biên dịch nhanh nhưng thiếu chính xác
 
-Hình mẫu "Renaissance developer" của Vogels kết hợp chuyên môn sâu với sự tò mò, tư duy hệ thống và khả năng giao tiếp. Mình hiểu điều này là cần biết các phần lân cận hoạt động ra sao để lường được tác động của một thay đổi. Nếu AI hỗ trợ viết một phần của luồng đăng nhập, kỹ sư vẫn cần hiểu cách phiên đăng nhập hoạt động, xem lại quyền truy cập và thử cả trường hợp đăng nhập thành công lẫn thất bại.
+Ông ví AI như một trình biên dịch dùng ngôn ngữ tự nhiên nhưng không chính xác. AI đã rút ngắn thời gian làm prototype từ vài tuần xuống vài giờ, nhưng kết quả vẫn phải được kiểm tra về bảo mật, trường hợp biên và hiệu năng. Kỹ sư vẫn chịu trách nhiệm cho những gì đưa lên production. Ông kết thúc bằng lời cảnh báo của Grace Hopper rằng tư duy "trước giờ vẫn làm vậy" rất nguy hiểm. Với mình, điều đó có nghĩa là không nên né tránh công cụ AI nhưng cũng không được tin nó một cách mù quáng.
 
 ## Liên hệ với Ownword
 
-Trên Ownword, người dùng dễ nhận ra khi đăng nhập, tra từ hoặc mở lại WordBoard bị chậm. Mình sẽ đo riêng từng bước để số trung bình không che mất chỗ đang gặp vấn đề. Khi thử khôi phục, mình sẽ dùng tài khoản thử nghiệm để xem lỗi tra cứu có báo rõ, cho thử lại và vẫn cho mở những từ đã lưu không.
+Ownword chạy trên một VM Lightsail và một cơ sở dữ liệu RDS Single-AZ. Đó là đánh đổi có chủ đích cho bản pilot nhỏ: chi phí thấp hơn đổi lại ít dự phòng hơn. Sau buổi nói chuyện, mình giải thích lựa chọn này rõ ràng hơn. Nếu database gặp sự cố, nhóm dựa vào bản export hằng ngày lên S3 đã thực sự được khôi phục thử ở môi trường tách biệt, và alarm `BackupFresh` sẽ báo nếu bản sao lưu bị thiếu. Nếu bản pilot mở rộng, chuyển sang Multi-AZ chính là số "9" mà nhóm sẽ cân nhắc cùng chi phí hằng tháng của nó. Mình cũng muốn tiếp tục rà soát từng dòng code có AI hỗ trợ, đặc biệt ở phần đăng nhập và truy cập cơ sở dữ liệu.
 
-{{< event-photo file="fireside_3.jpg" alt="Ảnh nhóm cùng người tham dự sự kiện First Cloud AI Journey" caption="Cùng các bạn trong nhóm của tôi tại sự kiện." >}}
+{{< event-photo file="fireside_3.jpg" alt="Ảnh nhóm cùng các bạn tham dự tại sự kiện First Cloud AI Journey" caption="Cùng các bạn trong nhóm sau buổi Fireside Chat." >}}
 
-## References
+## Tài liệu tham khảo
 
-- [Bài tổng kết trên AWS Builder Center](https://builder.aws.com/content/3KBSLeKsdkk6uMUPq7d9Xxa5jbS/the-invariable-lessons-of-tech-and-humanity-key-takeaways-from-amazon-cto-werner-vogels)
+- [Bài tổng kết buổi Fireside Chat trên AWS Builder Center](https://builder.aws.com/content/3KBSLeKsdkk6uMUPq7d9Xxa5jbS/the-invariable-lessons-of-tech-and-humanity-key-takeaways-from-amazon-cto-werner-vogels)
 - [Bài báo Dynamo của Amazon](https://www.amazon.science/publications/dynamo-amazons-highly-available-key-value-store)
-- [Bài viết của Werner Vogels về Renaissance developer](https://www.allthingsdistributed.com/2025/11/tech-predictions-for-2026-and-beyond.html)
+- [Trụ cột Reliability trong AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html)
