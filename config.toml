@@ -9,8 +9,8 @@ home = ["HTML", "RSS", "JSON"]
 
 [params]
   themeVariant = "workshop"
-  description = "Ownword internship report by Hồ Nhật Tân"
-  author = "Hồ Nhật Tân"
+  description = "Ownword internship report by [YOUR FULL NAME]"
+  author = "[YOUR FULL NAME]"
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false

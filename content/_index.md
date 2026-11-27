@@ -9,18 +9,18 @@ chapter: false
 
 ### Student Information
 
-**Full Name:** [YOUR FULL NAME]  
-**Phone Number:** [YOUR PHONE NUMBER]  
-**Email:** [your.email@example.com](mailto:your.email@example.com)  
-**University:** [YOUR UNIVERSITY]  
-**Major:** [YOUR MAJOR]  
-**Internship Company:** Công ty TNHH Amazon Web Services Việt Nam  
+**Full Name:** Hồ Nhật Tân  
+**Phone Number:** 0779612978  
+**Email:** tannhoo06@gmail.com
+**University:** FPT University  
+**Major:** Artificial Intelligence  
+**Internship Company:** Amazon Web Services Vietnam Company Limited  
 **Internship Position:** Workforce Bootcamp - First Cloud AI Journey  
 **Internship Duration:** From 14/09/2026 to 14/12/2026  
-**Project Team/Class:** Gi Group  
+**Project Team/Class:** NhomGi  
 **Project:** [Ownword - live application](https://app.ownword.co/) · [Watch the demo video](https://youtu.be/VEdfxhcqqCk)
 
-![Profile photo placeholder](images/profile-placeholder.svg)
+![Profile photo placeholder](static/images/profile.jpg)
 
 ### Content
 
