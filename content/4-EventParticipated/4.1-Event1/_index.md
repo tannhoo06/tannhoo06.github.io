@@ -44,7 +44,7 @@ The talk show covered how organizations actually use AWS and agentic AI in real 
 
 ## How this relates to Ownword
 
-Ownword already uses AI in two places: concept search on Amazon Bedrock and writing feedback through OpenRouter. After this event I paid more attention to the boundaries around those features. The model keys stay on the server, the suggestions are validated before they reach the learner, and each feature does one clearly defined job. If we add more AI features later, I would start by writing down what the feature must never do, then test those cases first.
+Ownword uses AI in several places: concept search on Amazon Bedrock, and writing feedback, vocabulary enrichment and practice grading through OpenRouter. After this event I paid more attention to the boundaries around those features. The model keys stay on the server, the suggestions are validated before they reach the learner, and each feature does one clearly defined job. If we add more AI features later, I would start by writing down what the feature must never do, then test those cases first.
 
 ## References
 

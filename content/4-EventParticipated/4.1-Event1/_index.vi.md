@@ -44,7 +44,7 @@ Phần tọa đàm nói về cách các tổ chức dùng AWS và agentic AI tro
 
 ## Liên hệ với Ownword
 
-Ownword đã dùng AI ở hai chỗ: tìm từ theo ý nghĩa bằng Amazon Bedrock và góp ý bài viết qua OpenRouter. Sau sự kiện này mình chú ý hơn đến giới hạn của các tính năng đó. Key của model chỉ nằm trên server, gợi ý được kiểm tra trước khi đến tay người học, và mỗi tính năng chỉ làm một việc được định nghĩa rõ. Nếu sau này thêm tính năng AI, mình sẽ viết ra trước những điều tính năng đó tuyệt đối không được làm, rồi kiểm thử các trường hợp đó đầu tiên.
+Ownword dùng AI ở nhiều chỗ: tìm từ theo ý nghĩa bằng Amazon Bedrock, góp ý bài viết, làm giàu từ vựng và chấm bài luyện tập qua OpenRouter. Sau sự kiện này mình chú ý hơn đến giới hạn của các tính năng đó. Key của model chỉ nằm trên server, gợi ý được kiểm tra trước khi đến tay người học, và mỗi tính năng chỉ làm một việc được định nghĩa rõ. Nếu sau này thêm tính năng AI, mình sẽ viết ra trước những điều tính năng đó tuyệt đối không được làm, rồi kiểm thử các trường hợp đó đầu tiên.
 
 ## Tài liệu tham khảo
 
