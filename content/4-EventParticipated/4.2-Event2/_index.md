@@ -30,7 +30,6 @@ One keynote slide stayed with me more than any product announcement. It counted 
 
 The watch-party session was about using AI agents across the software lifecycle, not only to autocomplete code but to plan, change and test larger pieces of work. The theme I kept hearing during the day was that once an agent can call APIs, modify code or trigger a deployment, it raises the same questions as any new team member: which identity does it use, what is it allowed to do, who approves its changes and where can we see what it did. Faster code generation doesn't remove the need for review. It moves the effort from writing code to reading and checking it.
 
-{{< event-photo file="cloud_day_2.jpg" alt="Slide shown on the watch-party screens" caption="A slide from the sessions we followed at the watch party." >}}
 
 ### More automation needs more guardrails, not fewer
 
@@ -43,8 +42,6 @@ Workloads, pipelines, services and AI agents all call AWS APIs, and each of them
 ## How this relates to Ownword
 
 Ownword has several non-human identities: the Lightsail host calling Amazon Bedrock, the backup job writing to S3, the Pre sign-up Lambda in Cognito and GitHub Actions pushing images to ECR. Our architecture already gives Bedrock access, S3 backups and account linking separate IAM policies, so one identity can't quietly do another's job. After this event I would like to go one step further and replace any remaining long-lived access key with temporary credentials, and write down for each identity who owns it and what it is allowed to do.
-
-{{< event-photo file="cloud_day_3.jpg" alt="Conference attendance badge" caption="My attendance badge for AWS Cloud and AI Day Hanoi 2026." >}}
 
 ## References
 

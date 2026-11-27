@@ -30,8 +30,6 @@ Một slide trong keynote làm mình nhớ hơn mọi thông báo sản phẩm. 
 
 Phiên tại điểm cầu nói về việc dùng AI agent xuyên suốt vòng đời phần mềm, không chỉ để gợi ý code mà còn để lên kế hoạch, sửa và kiểm thử những phần việc lớn hơn. Ý mình nghe nhắc lại nhiều lần trong ngày là khi agent có thể gọi API, sửa code hoặc kích hoạt triển khai, nó đặt ra những câu hỏi giống như khi có thành viên mới trong nhóm: dùng định danh nào, được phép làm gì, ai duyệt thay đổi và xem lại thao tác của nó ở đâu. Code được tạo nhanh hơn không có nghĩa là bỏ qua bước rà soát. Công sức chỉ chuyển từ viết code sang đọc và kiểm tra code.
 
-{{< event-photo file="cloud_day_2.jpg" alt="Slide chiếu trên màn hình tại điểm cầu" caption="Một slide trong các phiên nhóm mình theo dõi tại điểm cầu." >}}
-
 ### Tự động hóa càng nhiều càng cần rào chắn
 
 Platform engineering được nhắc đến như nền móng cho AI chứ không phải một chủ đề riêng. Khi tự động hóa nhiều hơn, nhóm càng phải dựa vào mẫu triển khai dùng chung, cấu hình an toàn mặc định và kiểm tra chính sách, vì không còn ai xem thủ công từng thay đổi. Mình liên hệ điều này với các lab CI/CD đã học: một pipeline chỉ an toàn bằng những bước kiểm tra nó chạy trước khi đưa thay đổi lên production.
@@ -44,7 +42,6 @@ Workload, pipeline, dịch vụ và AI agent đều gọi API của AWS và đ�
 
 Ownword có nhiều định danh không phải con người: Lightsail host gọi Amazon Bedrock, job sao lưu ghi vào S3, Lambda Pre sign-up trong Cognito và GitHub Actions đẩy image lên ECR. Kiến trúc hiện tại đã tách riêng IAM policy cho quyền gọi Bedrock, quyền sao lưu lên S3 và quyền liên kết tài khoản, nên định danh này không thể âm thầm làm việc của định danh khác. Sau sự kiện này, mình muốn đi thêm một bước: thay mọi access key dài hạn còn sót lại bằng thông tin xác thực tạm thời, và ghi rõ với mỗi định danh ai chịu trách nhiệm và nó được phép làm gì.
 
-{{< event-photo file="cloud_day_3.jpg" alt="Thẻ tham dự hội nghị" caption="Thẻ tham dự của mình tại AWS Cloud and AI Day Hanoi 2026." >}}
 
 ## Tài liệu tham khảo
 
