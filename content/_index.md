@@ -20,7 +20,7 @@ chapter: false
 **Project Team/Class:** NhomGi  
 **Project:** [Ownword - live application](https://app.ownword.co/) · [Watch the demo video](https://youtu.be/VEdfxhcqqCk)
 
-![Profile photo placeholder](static/images/profile.jpg)
+![Profile photo](images/profile.jpg)
 
 ### Content
 

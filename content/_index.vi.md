@@ -20,7 +20,7 @@ chapter: false
 **Nhóm dự án/Lớp:** NhomGi  
 **Dự án:** [Ứng dụng Ownword đang chạy](https://app.ownword.co/) · [Xem video demo](https://youtu.be/VEdfxhcqqCk)
 
-![Ảnh đại diện sẽ bổ sung](static/images/profile.jpg)
+![Ảnh đại diện](images/profile.jpg)
 
 ### Nội dung
 
