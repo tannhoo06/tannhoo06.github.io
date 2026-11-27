@@ -133,4 +133,6 @@ curl -fsS -D - -o /dev/null "https://$LAB_HOST/auth/signin?hosted=1"
 
 **Điểm kiểm tra.** Trang chủ trả 200 qua CloudFront, còn URL managed login chuyển bạn sang Cognito với callback công khai. Dùng biểu mẫu Ownword để đăng ký và xác minh email thử. Đăng nhập, lưu một từ rồi đăng xuất. Dùng Google với cùng email đó để đăng nhập lần đầu vào pool. Bạn sẽ thấy lại WordBoard cũ. Thử thêm một tài khoản Google khác để kiểm tra bảng từ riêng. Nếu CloudFront trả 502, xem DNS, TLS máy chủ gốc và header Host. Nếu Cognito từ chối chuyển hướng, đối chiếu từng ký tự của URL callback và đăng xuất.
 
+{{< figure src="/images/workshop/production-wordboard.png" alt="WordBoard hiển thị các từ đã lưu tại app.ownword.co qua HTTPS" caption="Sau khi đăng nhập, người học mở WordBoard qua HTTPS trên ứng dụng đang vận hành và xem các từ đã lưu." >}}
+
 [Tiếp theo: Sao lưu RDS và cấu hình giám sát](../5.6-operations/)

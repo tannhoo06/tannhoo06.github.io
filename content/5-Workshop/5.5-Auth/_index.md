@@ -133,4 +133,6 @@ curl -fsS -D - -o /dev/null "https://$LAB_HOST/auth/signin?hosted=1"
 
 **Checkpoint.** The homepage should return 200 through CloudFront. The hosted sign-in URL should send you to Cognito with the public callback. Register and verify a test email through Ownword's form. Sign in, save a word, and sign out. Then use Google with that verified email for the first time in this pool. You should see the same WordBoard. Try another Google account to make sure it has a separate board. For a 502, check DNS, origin TLS, and the forwarded host. If Cognito rejects the redirect, compare the callback and sign-out URLs character by character.
 
+{{< figure src="/images/workshop/production-wordboard.png" alt="Ownword WordBoard showing saved words at app.ownword.co over HTTPS" caption="After sign-in, WordBoard opens over HTTPS at the production URL and displays the learner's saved words." >}}
+
 [Next: Back up RDS and configure monitoring](../5.6-operations/)

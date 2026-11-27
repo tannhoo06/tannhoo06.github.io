@@ -211,6 +211,8 @@ PATH=/usr/local/bin:/usr/bin:/bin
 
 ## 5. Kiểm tra gửi cảnh báo
 
+{{< figure src="/images/workshop/production-backup-alarm.png" alt="CloudWatch hiển thị cảnh báo sao lưu Ownword ở trạng thái OK và chỉ số BackupFresh bằng 1" caption="Trong CloudWatch tại Singapore, BackupFresh bằng 1 và cảnh báo sao lưu của Ownword ở trạng thái OK." >}}
+
 Trong CloudShell tại Singapore, đợi alarm lab báo **OK** rồi dùng đúng tên alarm để gửi thử. CloudWatch sẽ tự quay lại đánh giá metric. Kiểm tra lịch sử gửi và email trong hộp thư. Để kiểm tra cả ngưỡng, quan sát thêm khi bản sao quá cũ hoặc metric bị thiếu. [SetAlarmState](https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/set-alarm-state.html)
 
 ```bash

@@ -87,4 +87,6 @@ CREATE DATABASE ownword OWNER ownword_app;
 
 **Checkpoint.** Check that `\conninfo` reports SSL and that both roles and the database exist. If the connection times out, check the peering connection, subnet routes, and the private IPv4 in the security group. For a certificate error, confirm you're using the RDS endpoint and the AWS CA bundle. [RDS PostgreSQL TLS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html) · [PostgreSQL database ownership](https://www.postgresql.org/docs/16/sql-createdatabase.html)
 
+{{< figure src="/images/workshop/production-rds-tls.png" alt="PostgreSQL session reporting SSL enabled and TLSv1.3" caption="A read-only check from the running Ownword app on Lightsail confirmed a TLS 1.3 connection to production Amazon RDS in Singapore." >}}
+
 [Next: Configure sign-in, deploy the app and connect CloudFront](../5.5-auth/)

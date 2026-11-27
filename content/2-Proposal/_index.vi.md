@@ -12,7 +12,7 @@ Ownword dành cho người học tiếng Anh nhận ra nhiều từ khi đọc n
 
 Bản thử nghiệm chạy trên AWS. Amazon Bedrock dùng Kimi K3.1 Pro để tra từ theo khái niệm, còn OpenRouter cung cấp mô hình cho việc đánh giá bản nháp và kiểm tra bản chỉnh sửa. Người đọc có thể [xem video demo](https://youtu.be/VEdfxhcqqCk), [dùng thử ứng dụng đang chạy](https://app.ownword.co/) hoặc tự triển khai theo [workshop song ngữ](../5-workshop/).
 
-Khi hoàn tất báo cáo (30/11/2026), nhóm vẫn đang chờ AWS Support xử lý quyền truy cập mô hình. Các yêu cầu gọi GPT-6 Luna trên Amazon Bedrock từ tài khoản AWS Free Tier vẫn trả về `AccessDeniedException` dù nhóm đã chấp nhận thỏa thuận sử dụng mô hình. Nhóm tiếp tục dùng OpenRouter để truy cập GPT-6 Luna phục vụ đánh giá. Sau nhiều đợt thử nghiệm chấm bản nháp và kiểm tra bản chỉnh sửa, nhóm chọn GPT-6.1 Terra với mức suy luận thấp qua OpenRouter cho tính năng Viết đang vận hành vì mô hình cân bằng tốt nhất giữa chất lượng phản hồi và chi phí với khối lượng sử dụng của Ownword.
+Khi hoàn tất báo cáo (30/11/2026), nhóm vẫn đang chờ AWS Support xử lý quyền truy cập mô hình. Các yêu cầu gọi GPT-6 Luna trên Amazon Bedrock từ tài khoản AWS Free Tier vẫn trả về `AccessDeniedException` dù nhóm đã chấp nhận thỏa thuận sử dụng mô hình. Nhóm tiếp tục dùng OpenRouter để truy cập GPT-6 Luna phục vụ đánh giá. Sau nhiều đợt thử nghiệm chấm bản nháp và kiểm tra bản chỉnh sửa, nhóm chọn GPT-6.1 Terra với mức suy luận thấp qua OpenRouter cho tính năng Viết đang vận hành vì mô hình cân bằng tốt nhất giữa chất lượng phản hồi và chi phí với khối lượng sử dụng của Ownword. Với phần làm giàu từ vựng và chấm luyện tập, nhóm chọn Gemini 3.6 Flash qua OpenRouter vì mô hình giải nghĩa và chấm câu ổn định với chi phí thấp, trong khi Gemini 3.6 Flash không có trong danh mục mô hình của Amazon Bedrock.
 
 ## Vấn đề
 
@@ -66,7 +66,7 @@ Bản thử nghiệm chạy ứng dụng trên một VM và dùng cơ sở dữ 
 
 1. Mở ứng dụng (bước 1-4): Trình duyệt kết nối HTTPS tới CloudFront. CloudFront kết nối TLS tới Caddy qua tên miền máy chủ gốc. Caddy chuyển yêu cầu tới Next.js. Ứng dụng đọc hoặc ghi dữ liệu người học trên RDS riêng tư qua một kết nối TLS khác.
 2. Đăng nhập (bước 5-8): Yêu cầu đăng nhập bằng mật khẩu đi tới Cognito. Với Google, Cognito xử lý liên kết danh tính rồi đưa trình duyệt về callback của Ownword. Next.js đổi mã ủy quyền bằng PKCE. Lambda có thể liên kết danh tính Google ở lần đăng nhập đầu tiên đủ điều kiện.
-3. Gọi mô hình (bước 9-10): Next.js gửi yêu cầu tra theo khái niệm tới Kimi trên Bedrock. Đánh giá bài viết và kiểm tra bản chỉnh sửa dùng tuyến OpenRouter riêng. Thông tin xác thực của nhà cung cấp nằm trên máy chủ.
+3. Gọi mô hình (bước 9-10): Next.js gửi yêu cầu tra theo khái niệm tới Kimi trên Bedrock. Đánh giá bài viết, làm giàu từ vựng và chấm luyện tập dùng các tuyến OpenRouter riêng. Thông tin xác thực của nhà cung cấp nằm trên máy chủ.
 4. Sao lưu và cảnh báo (bước 11-14): VM đọc RDS bằng role chỉ đọc, xuất cơ sở dữ liệu lên S3 riêng tư rồi kiểm tra bản sao mới nhất mỗi giờ. Nếu bản sao quá cũ hoặc thiếu tín hiệu, hệ thống gửi email qua SNS topic có mã hóa.
 
 Workshop giải thích thêm [sơ đồ và đường đi của yêu cầu](../5-workshop/5.3-architecture/), [đăng nhập và HTTPS công khai](../5-workshop/5.5-auth/) và [cách sao lưu, khôi phục và thử cảnh báo](../5-workshop/5.6-operations/).
@@ -75,7 +75,7 @@ Workshop giải thích thêm [sơ đồ và đường đi của yêu cầu](../5
 
 Ownword dùng Kimi K3.1 Pro trên Amazon Bedrock để tra từ theo khái niệm, một phần chính của tính năng khám phá từ vựng. Người học có thể diễn đạt ý mình muốn nói bằng tiếng Anh hoặc tiếng Việt để nhận gợi ý từ và cụm từ phù hợp. Khi người học lặp lại truy vấn, ứng dụng có thể dùng kết quả đã lưu để tránh gọi mô hình thêm một lần.
 
-Tính năng Viết gửi bản nháp hoặc bản chỉnh sửa đến GPT-6.1 Terra Low qua OpenRouter và yêu cầu Zero Data Retention trên tuyến đã cấu hình. Ứng dụng kiểm tra cấu trúc phản hồi trước khi lưu. [Tình trạng truy cập mô hình](#tóm-tắt-dự-án)
+Tính năng Viết gửi bản nháp hoặc bản chỉnh sửa đến GPT-6.1 Terra Low qua OpenRouter và yêu cầu Zero Data Retention trên tuyến đã cấu hình. Phần làm giàu từ vựng và chấm luyện tập dùng Gemini 3.6 Flash qua OpenRouter vì phản hồi ngắn ổn định và chi phí thấp, còn dòng Gemini chưa có trên Bedrock. Ứng dụng kiểm tra cấu trúc phản hồi trước khi lưu. [Tình trạng truy cập mô hình](#tóm-tắt-dự-án)
 
 ## Tiến độ và các mốc
 

@@ -10,7 +10,7 @@ pre: " <b>5.1.</b> "
 
 Once your copy of Ownword is running, sign in and try it as a learner. Use Bedrock to search by concept, save one of the suggestions to WordBoard, and practice recalling it. You can also submit a made-up writing sample and see what feedback comes back. WordBoard tracks New, Practicing, and Active words, and your streak shows the days you've been active.
 
-Model routing note: concept search runs on Amazon Bedrock with Kimi K3.1 Pro, while the Writing module uses GPT-6.1 Terra with low reasoning effort through OpenRouter. Requests for GPT-6 Luna on Bedrock returned `AccessDeniedException` on an AWS Free Tier account even after accepting the model agreement, so OpenRouter handles Writing assessment and revision checks.
+Model routing note: concept search runs on Amazon Bedrock with Kimi K3.1 Pro. The Writing module uses GPT-6.1 Terra with low reasoning effort through OpenRouter because requests for GPT-6 Luna on Bedrock returned `AccessDeniedException` on an AWS Free Tier account even after accepting the model agreement. Vocabulary enrichment and practice grading use Gemini 3.6 Flash through OpenRouter for reliable grading at low cost, and Gemini models are not on Amazon Bedrock.
 
 ## What you will practice
 

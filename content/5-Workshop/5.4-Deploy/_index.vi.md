@@ -87,4 +87,6 @@ CREATE DATABASE ownword OWNER ownword_app;
 
 **Điểm kiểm tra.** Xem `\conninfo` có báo SSL không, rồi kiểm tra hai role và cơ sở dữ liệu đã được tạo. Nếu kết nối quá thời gian, xem lại peering, đường định tuyến của subnet và IPv4 riêng trong security group. Nếu lỗi chứng chỉ, kiểm tra bạn đang dùng đúng endpoint RDS và tệp CA AWS. [TLS cho RDS PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html) · [Chủ sở hữu cơ sở dữ liệu PostgreSQL](https://www.postgresql.org/docs/16/sql-createdatabase.html)
 
+{{< figure src="/images/workshop/production-rds-tls.png" alt="Phiên PostgreSQL báo SSL đang bật và dùng TLSv1.3" caption="Truy vấn chỉ đọc từ ứng dụng Ownword trên Lightsail xác nhận kết nối TLS 1.3 đến Amazon RDS đang vận hành tại Singapore." >}}
+
 [Tiếp theo: Cấu hình đăng nhập, chạy ứng dụng và kết nối CloudFront](../5.5-auth/)

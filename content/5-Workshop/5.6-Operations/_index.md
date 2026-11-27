@@ -211,6 +211,8 @@ PATH=/usr/local/bin:/usr/bin:/bin
 
 ## 5. Verify alarm delivery
 
+{{< figure src="/images/workshop/production-backup-alarm.png" alt="CloudWatch showing the Ownword pilot backup alarm in OK state and the BackupFresh metric at 1" caption="In CloudWatch Singapore, BackupFresh is 1 and the Ownword pilot backup alarm is in the OK state." >}}
+
 In Singapore CloudShell, wait until your lab alarm shows **OK**, then use its exact name to trigger a test. CloudWatch returns to evaluating the metric automatically. Look for a successful action and the email in your inbox. To check the threshold as well, observe what happens when the backup is stale or the metric is missing. [SetAlarmState](https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/set-alarm-state.html)
 
 ```bash

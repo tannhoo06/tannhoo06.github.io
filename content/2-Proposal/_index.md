@@ -12,7 +12,7 @@ Ownword is an English learning app for people who recognize more words than they
 
 The pilot runs on AWS. Amazon Bedrock handles concept search with Kimi K3.1 Pro, and OpenRouter gives the Writing module access to a frontier model for draft assessment and revision feedback. Readers can [watch the demo video](https://youtu.be/VEdfxhcqqCk), [try the live app](https://app.ownword.co/), or deploy their own copy with the [bilingual workshop](../5-workshop/).
 
-At report close (30 November 2026), we are still waiting for AWS Support to resolve model access. Requests for GPT-6 Luna on Amazon Bedrock returned `AccessDeniedException` on our AWS Free Tier account even after we accepted the model agreement. We continue to access GPT-6 Luna through OpenRouter for evaluation. After several rounds of benchmarking for draft assessment and revision checks, we selected GPT-6.1 Terra with low reasoning effort through OpenRouter for production Writing because it offered the best balance of feedback quality and cost for our workload.
+At report close (30 November 2026), we are still waiting for AWS Support to resolve model access. Requests for GPT-6 Luna on Amazon Bedrock returned `AccessDeniedException` on our AWS Free Tier account even after we accepted the model agreement. We continue to access GPT-6 Luna through OpenRouter for evaluation. After several rounds of benchmarking for draft assessment and revision checks, we selected GPT-6.1 Terra with low reasoning effort through OpenRouter for production Writing because it offered the best balance of feedback quality and cost for our workload. For vocabulary enrichment and practice grading, we picked Gemini 3.6 Flash through OpenRouter because it gave reliable definitions and grading at low cost, and Gemini 3.6 Flash is not listed in the Amazon Bedrock model catalog.
 
 ## The problem
 
@@ -66,7 +66,7 @@ The pilot uses one application VM and a private Single-AZ database. Its purpose 
 
 1. Open the app (steps 1-4): The browser connects to CloudFront over HTTPS. CloudFront then connects over TLS to Caddy at the origin hostname. Caddy sends the request to Next.js, which reads or writes learner data in private RDS using a separate TLS connection.
 2. Sign in (steps 5-8): A password sign-in goes to Cognito. For Google sign-in, Cognito handles federation and returns the browser to Ownword's callback. Next.js exchanges the authorization code using PKCE. The Lambda trigger can link the Google identity during the first eligible sign-in.
-3. Ask a model (steps 9-10): Next.js sends concept-search requests to Kimi on Bedrock. Writing assessment and revision checks use a separate OpenRouter route. Provider credentials stay on the server.
+3. Ask a model (steps 9-10): Next.js sends concept-search requests to Kimi on Bedrock. Writing assessment, vocabulary enrichment, and practice grading use separate OpenRouter routes. Provider credentials stay on the server.
 4. Back up and alert (steps 11-14): The VM reads RDS with a read-only backup role, exports the database to private S3, and checks the latest backup each hour. A stale or missing signal triggers an email through the encrypted SNS topic.
 
 The workshop walks through [the diagram and request flow](../5-workshop/5.3-architecture/), [sign-in and public HTTPS](../5-workshop/5.5-auth/), and [backup, restore, and alarm testing](../5-workshop/5.6-operations/).
@@ -75,7 +75,7 @@ The workshop walks through [the diagram and request flow](../5-workshop/5.3-arch
 
 Ownword uses Kimi K3.1 Pro on Amazon Bedrock for concept search, a core part of its vocabulary discovery. Learners can describe an idea in English or Vietnamese and get suggestions for words and phrases that express it. The app can reuse a saved result for a repeat lookup, which avoids another model call.
 
-Writing submits the draft or revision to GPT-6.1 Terra Low through OpenRouter and requests Zero Data Retention on the configured route. The application validates the structured feedback before saving it. [Model access status](#executive-summary)
+Writing submits the draft or revision to GPT-6.1 Terra Low through OpenRouter and requests Zero Data Retention on the configured route. Vocabulary enrichment and practice grading use Gemini 3.6 Flash through OpenRouter for reliable short responses at low cost, and Gemini is not on Bedrock. The application validates the structured feedback before saving it. [Model access status](#executive-summary)
 
 ## Timeline and milestones
 

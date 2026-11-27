@@ -16,7 +16,7 @@ Các phần dưới đây bắt buộc phải là nội dung riêng của từng
 
 1. Điền tên và thông tin cá nhân của bạn. Đổi dòng `[YOUR FULL NAME]` trong `config.toml` thành tên bạn, sau đó điền họ tên, số điện thoại, email, trường và chuyên ngành ở trang chủ (`content/_index.md` và `content/_index.vi.md`). Nếu muốn hiển thị ảnh chân dung, thay tệp `static/images/profile-placeholder.svg` bằng ảnh của bạn.
 2. Viết lại nhật ký công việc từ Tuần 1 đến Tuần 12 (`content/1-Worklog/`). Thay các ô mẫu bằng công việc bạn đã học và làm mỗi tuần, gắn ảnh chụp màn hình bài lab của riêng bạn vào thư mục `static/images/worklog/` và nhớ che Account ID hoặc thông tin riêng tư.
-3. Viết lại hoàn toàn mục Sự kiện đã tham gia (`content/4-EventParticipated/`). Xóa 3 sự kiện mẫu và thay bằng 3 sự kiện bạn thực sự tham dự, kèm bài viết của chính bạn và ảnh check-in thấy rõ khuôn mặt (thay các ảnh cũ trong `static/images/events/`).
+3. Viết lại hoàn toàn mục Sự kiện đã tham gia (`content/4-EventParticipated/`). Xóa 3 sự kiện mẫu và thay bằng 3 sự kiện bạn thực sự tham dự, kèm bài viết của chính bạn và ảnh check-in thấy rõ khuôn mặt (xóa hết các ảnh mẫu cũ trong `static/images/events/` để tránh sót ảnh thẻ tên của thành viên khác, rồi thay bằng ảnh của riêng bạn).
 4. Làm phần Tự đánh giá (`content/6-Self-evaluation/`). Đổi ô `⬜` sang `✅` ở mức phù hợp với bạn, sau đó tự viết phần đóng góp của bạn trong dự án Ownword và những điểm muốn cải thiện.
 5. Viết phần Chia sẻ và góp ý (`content/7-Feedback/`) theo trải nghiệm thực tập của riêng bạn.
 
