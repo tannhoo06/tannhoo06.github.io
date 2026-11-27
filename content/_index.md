@@ -11,7 +11,7 @@ chapter: false
 
 **Full Name:** Hồ Nhật Tân  
 **Phone Number:** 0779612978  
-**Email:** tannhoo06@gmail.com
+**Email:** [tannhoo06@gmail.com](mailto:tannhoo06@gmail.com)  
 **University:** FPT University  
 **Major:** Artificial Intelligence  
 **Internship Company:** Amazon Web Services Vietnam Company Limited  

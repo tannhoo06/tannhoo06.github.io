@@ -11,9 +11,9 @@ chapter: false
 
 **Họ và tên:** Hồ Nhật Tân  
 **Số điện thoại:** 0779612978  
-**Email:** tannhoo06@gmail.com  
+**Email:** [tannhoo06@gmail.com](mailto:tannhoo06@gmail.com)  
 **Trường:** Đại học FPT  
-**Chuyên ngành:** Trí tuệ nhân tạo 
+**Chuyên ngành:** Trí tuệ nhân tạo  
 **Công ty thực tập:** Công ty TNHH Amazon Web Services Việt Nam  
 **Vị trí thực tập:** Workforce Bootcamp - First Cloud AI Journey  
 **Thời gian thực tập:** Từ 14/09/2026 đến 14/12/2026  
